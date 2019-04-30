@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  250
+                  88
                 </span>
               
 
@@ -373,8 +373,16 @@
       
         
           
-            <h3 id="马尔克夫模型的一些概念"><a href="#马尔克夫模型的一些概念" class="headerlink" title="马尔克夫模型的一些概念"></a>马尔克夫模型的一些概念</h3><p><strong>状态链</strong>：小明今天手感主要依靠今天有没有出太阳<br><strong>观察链</strong>：小明今天的胜率<img src="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif" alt="1556604603432"><br><strong>Assumptions</strong>: 小明今天的胜率仅由手感状态决定(天气状态)， 明天的天气只与今天的天气有关<br><strong>Define</strong>：<br>    状态初始概率：<br>$$<br>\pi_i=P{(y_i = S_i)}  1&lt;i&lt;N<br>$$<br>    状态转移概率：<br>$$<br>a_{ij} = P(y_{t+1}=S_j|y_t=S_i),      1\leq i,j\leq N<br>$$<br>    输出观测概率<br>$$<br>b_{ij} = P(x_t=O_j | y_t =S_i),  1 \leq i\leq N,  1\leq j\leq M<br>$$<br>    要求的输出：<br>$$<br>P(y_i = S_i, x_j = O_j) =\pi_i <em>b_{ij}<br>$$<br>$$<br>P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}</em>\pi_i*b_{i+1，j+1}<br>$$</p>
-<p>解决三种问题：</p>
+            <h3 id="马尔克夫模型的一些概念"><a href="#马尔克夫模型的一些概念" class="headerlink" title="马尔克夫模型的一些概念"></a>马尔克夫模型的一些概念</h3><p><strong>状态链</strong>：小明今天手感主要依靠今天有没有出太阳<br><strong>观察链</strong>：小明今天的胜率<img src="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif" alt="1556604603432"><br><strong>Assumptions</strong>: 小明今天的胜率仅由手感状态决定(天气状态)， 明天的天气只与今天的天气有关<br><strong>Define</strong>：<br>    状态初始概率：</p>
+<script type="math/tex; mode=display">
+\pi_i=P{(y_i = S_i)}  1<i<N</script><p>状态转移概率：</p>
+<script type="math/tex; mode=display">
+a_{ij} = P(y_{t+1}=S_j|y_t=S_i),      1\leq i,j\leq N</script><p>输出观测概率</p>
+<script type="math/tex; mode=display">
+b_{ij} = P(x_t=O_j | y_t =S_i),  1 \leq i\leq N,  1\leq j\leq M</script><p>要求的输出：</p>
+<script type="math/tex; mode=display">
+P(y_i = S_i, x_j = O_j) =\pi_i *b_{ij}</script><script type="math/tex; mode=display">
+P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三种问题：</p>
 <ol>
 <li>有一个词典的统计数据可以得到模型<code>{A,B,Π}</code> ，可以得到观察序列，想知道隐藏序列，<code>语音识别，词性标注</code></li>
 <li>得到模型，知道状态序列，想预测概率最大的观察序列</li>
@@ -711,6 +719,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = Integer.MAX_VALUE;</span><br><span class="line">   <span class="keyword">int</span> j = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> k = i + j;</span><br><span class="line">   System.out.println(<span class="string">"i ("</span> + i + <span class="string">") + j ("</span> + j + <span class="string">") = k ("</span> + k + <span class="string">")"</span>);</span><br></pre></td></tr></table></figure>
 <p>输出结果： i (2147483647) + j (2147483647) = k (-2)</p>
 <h2 id="包装类型"><a href="#包装类型" class="headerlink" title="包装类型"></a>包装类型</h2><p>为了解决基本数据类型会产生溢出的现象，将基本类型封装成为一个类</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -753,6 +762,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>注意：变量名小写，类名大写</p>
 <p>毫无疑问，全面向对象的语言有一个特点，就是什么都是对象，显然这是一种理想的状态，丰富的数据类型，才可以面对丰富的情况，类：丰富的属性和方法，全都继承于object，更多的扩展性带来了效率的低下，相比基本类型更快，好用，但是扩展性低。</p>
 <p>将存在栈内的的数据变成存在堆中的对象，Java SE5 以上的版本增加了自动装箱技术；在C#中也可以进行相似的转换：</p>
@@ -1257,7 +1267,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.4k</span>
+    <span title="Site words total count">1.3k</span>
   
 </div>
 
@@ -1276,7 +1286,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.4k字</span>
+  <span class="post-count">博客全站共1.3k字</span>
 </div>
         
 
@@ -1551,6 +1561,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

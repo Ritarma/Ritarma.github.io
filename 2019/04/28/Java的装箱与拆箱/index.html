@@ -395,6 +395,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = Integer.MAX_VALUE;</span><br><span class="line">   <span class="keyword">int</span> j = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> k = i + j;</span><br><span class="line">   System.out.println(<span class="string">"i ("</span> + i + <span class="string">") + j ("</span> + j + <span class="string">") = k ("</span> + k + <span class="string">")"</span>);</span><br></pre></td></tr></table></figure>
 <p>输出结果： i (2147483647) + j (2147483647) = k (-2)</p>
 <h2 id="包装类型"><a href="#包装类型" class="headerlink" title="包装类型"></a>包装类型</h2><p>为了解决基本数据类型会产生溢出的现象，将基本类型封装成为一个类</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -437,6 +438,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>注意：变量名小写，类名大写</p>
 <p>毫无疑问，全面向对象的语言有一个特点，就是什么都是对象，显然这是一种理想的状态，丰富的数据类型，才可以面对丰富的情况，类：丰富的属性和方法，全都继承于object，更多的扩展性带来了效率的低下，相比基本类型更快，好用，但是扩展性低。</p>
 <p>将存在栈内的的数据变成存在堆中的对象，Java SE5 以上的版本增加了自动装箱技术；在C#中也可以进行相似的转换：</p>
@@ -695,7 +697,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.4k</span>
+    <span title="Site words total count">1.3k</span>
   
 </div>
 
@@ -714,7 +716,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.4k字</span>
+  <span class="post-count">博客全站共1.3k字</span>
 </div>
         
 
@@ -993,6 +995,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
