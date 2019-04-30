@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  183
+                  188
                 </span>
               
 
@@ -373,7 +373,16 @@
       
         
           
-            <h1 id="JAVA开发的几条重要原则"><a href="#JAVA开发的几条重要原则" class="headerlink" title="JAVA开发的几条重要原则"></a>JAVA开发的几条重要原则</h1><p>在大型项目中使用log的门面模式，而不能直接调用log4的api<br>boolean 变量不要增加isOK这样的，直接写OK，否则序列化会产生灵异问题<br>Boolean是boolean的封装， 在pojo和trs框架中使用Boolean可以发现异常，及时停止程序，在返回值的时候考虑到Boolean带来的null，直接用boolean会减少很多null处理工作<br>在for循环中少量使用“+”来拼接字符串，使用join或其他的<br>使用foreach循环可以简洁，但是注意本质基于迭代器的while循环，不要在foreach中使用add，和remove对象<br>hashmap中如果设置一个初始化容量，可以提高效率</p>
+            <h1 id="JAVA开发的几条重要原则"><a href="#JAVA开发的几条重要原则" class="headerlink" title="JAVA开发的几条重要原则"></a>JAVA开发的几条重要原则</h1><ol>
+<li><p>在大型项目中使用log的门面模式，而不能直接调用log4的api</p>
+</li>
+<li><p>boolean 变量不要增加isOK这样的，直接写OK，否则序列化会产生灵异问题</p>
+</li>
+<li>Boolean是boolean的封装， 在pojo和trs框架中使用Boolean可以发现异常，及时停止程序，在返回值的时候考虑到Boolean带来的null，直接用boolean会减少很多null处理工作</li>
+<li>在for循环中少量使用“+”来拼接字符串，使用join或其他的</li>
+<li>使用foreach循环可以简洁，但是注意本质基于迭代器的while循环，不要在foreach中使用add，和remove对象</li>
+<li>hashmap中如果设置一个初始化容量，可以提高效率</li>
+</ol>
 
           
         
