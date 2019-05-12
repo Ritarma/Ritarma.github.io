@@ -88,16 +88,19 @@
 
 
 
-<meta name="description" content="The place for Rita show his learning notes and personal insights">
-<meta property="og:type" content="website">
+<meta name="description" content="Text Classification Read notes解决文本分类的问题流程： ​    特征提取 -&amp;gt;&amp;gt; (特征降维) &amp;gt;&amp;gt; 分类→评估  基于机器学习和深度学习都有一个难以避免的特点，就是模型本身的鲁棒性相对不够，但是处理的问题都十分复杂，对文本的预处理十分重要： 特征提取与清洗文本数据的清洗：  1. 分词：Tokenization  2. 去除意义不大的词语{">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Ritarma">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/05/12/Text Classification Read notes/index.html">
 <meta property="og:site_name" content="Ritarma">
-<meta property="og:description" content="The place for Rita show his learning notes and personal insights">
+<meta property="og:description" content="Text Classification Read notes解决文本分类的问题流程： ​    特征提取 -&amp;gt;&amp;gt; (特征降维) &amp;gt;&amp;gt; 分类→评估  基于机器学习和深度学习都有一个难以避免的特点，就是模型本身的鲁棒性相对不够，但是处理的问题都十分复杂，对文本的预处理十分重要： 特征提取与清洗文本数据的清洗：  1. 分词：Tokenization  2. 去除意义不大的词语{">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="c:/Users/ThinkPad/AppData/Roaming/Typora/typora-user-images/1557644929766.png">
+<meta property="og:updated_time" content="2019-05-12T08:44:51.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ritarma">
-<meta name="twitter:description" content="The place for Rita show his learning notes and personal insights">
+<meta name="twitter:description" content="Text Classification Read notes解决文本分类的问题流程： ​    特征提取 -&amp;gt;&amp;gt; (特征降维) &amp;gt;&amp;gt; 分类→评估  基于机器学习和深度学习都有一个难以避免的特点，就是模型本身的鲁棒性相对不够，但是处理的问题都十分复杂，对文本的预处理十分重要： 特征提取与清洗文本数据的清洗：  1. 分词：Tokenization  2. 去除意义不大的词语{">
+<meta name="twitter:image" content="c:/Users/ThinkPad/AppData/Roaming/Typora/typora-user-images/1557644929766.png">
 
 
 
@@ -127,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/12/Text Classification Read notes/">
 
 
 
 
 
-  <title>Archive | Ritarma</title>
+  <title> | Ritarma</title>
   
 
 
@@ -152,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/Ritarma" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,212 +259,217 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Text Classification Read notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ritarma Arthur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ritarma">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline"></h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-12T16:44:38+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 6 posts in total. Keep on posting.
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/12/Text Classification Read notes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/05/12/Text Classification Read notes/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
 
-        
+          
+          
+             <span id="/2019/05/12/Text Classification Read notes/" class="leancloud_visitors" data-flag-title>
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/12/Text Classification Read notes/" itemprop="url">
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">Untitled</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  345
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-12T16:44:38+08:00" content="2019-05-12">
-          05-12
-        </time>
-      </div>
+              
 
-    </header>
-  </article>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/30/隐马尔克夫模型的一些概念/" itemprop="url">
-              
-                <span itemprop="name">隐马尔克夫模型的一些概念</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-30T13:49:35+08:00" content="2019-04-30">
-          04-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/29/JAVA开发的几条重要原则/" itemprop="url">
-              
-                <span itemprop="name">Java开发的几条重要原则</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-29T13:36:43+08:00" content="2019-04-29">
-          04-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="Text-Classification-Read-notes"><a href="#Text-Classification-Read-notes" class="headerlink" title="Text Classification Read notes"></a>Text Classification Read notes</h2><p>解决文本分类的问题<br><strong>流程：</strong></p>
+<p>​    特征提取 -&gt;&gt; (特征降维) &gt;&gt; 分类→评估</p>
+<p><img src="C:\Users\ThinkPad\AppData\Roaming\Typora\typora-user-images\1557644929766.png" alt="1557644929766"></p>
+<p>基于机器学习和深度学习都有一个难以避免的特点，就是模型本身的鲁棒性相对不够，但是处理的问题都十分复杂，对文本的预处理十分重要：</p>
+<h3 id="特征提取与清洗"><a href="#特征提取与清洗" class="headerlink" title="特征提取与清洗"></a>特征提取与清洗</h3><p><strong>文本数据的清洗</strong>：</p>
+<pre><code> 1. 分词：Tokenization
+ 2. 去除意义不大的词语{啊，一，后，前}
+ 3. 大小写问题解决
+ 4. 口语化和简称
+ 5. 降噪{不必要的标点}
+ 6. 语法错误
+ 7. 词语的时态
+ 8. 还原词形
+</code></pre><p><strong>词语的语法分析</strong></p>
+<pre><code>1. N-Gram
+</code></pre><p><strong>加权词语</strong></p>
+<pre><code>1. 词袋模型（不计算顺序与上下文，将所有的 词扔进一个袋子中，附送的都是出现次数，基于单热编码）
+ 2. 词向量模型（神经忘录得到高位向量，具有上下文信息，但是并不能包含长连续全部的语义）
+</code></pre><p>此处注意的事：并不是词向量（word2Vec）就是最好的，在贝叶斯邮件分类，文本分类中，词袋模型的下效率高，仅仅有文章的内容信息，鲁棒性更好</p>
+<h3 id="特征降维"><a href="#特征降维" class="headerlink" title="特征降维"></a>特征降维</h3><ol>
+<li>PCA 主成分分析法应用非常广</li>
+<li>ICA 独立成分分析，在线性的模型中应用多</li>
+<li>LDA ，NMF</li>
+</ol>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/28/Java的装箱与拆箱/" itemprop="url">
-              
-                <span itemprop="name">Java的装箱与拆箱</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-28T11:33:12+08:00" content="2019-04-28">
-          04-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/27/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-27T16:38:40+08:00" content="2019-04-27">
-          04-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    <div>
+      
+      <div>
+    
+    <div style="text-align:center;color:#ccc;font-size:14px;">
+        -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读 :D -------------
+    </div>
+    
+</div>
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/30/隐马尔克夫模型的一些概念/" rel="next" title="隐马尔克夫模型的一些概念">
+                <i class="fa fa-chevron-left"></i> 隐马尔克夫模型的一些概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -469,6 +477,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">Show comments from Gitment</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+  
 
         </div>
         
@@ -489,8 +508,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -564,6 +592,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Classification-Read-notes"><span class="nav-number">1.</span> <span class="nav-text">Text Classification Read notes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征提取与清洗"><span class="nav-number">1.1.</span> <span class="nav-text">特征提取与清洗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征降维"><span class="nav-number">1.2.</span> <span class="nav-text">特征降维</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -722,6 +766,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

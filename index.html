@@ -271,6 +271,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Text Classification Read notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ritarma Arthur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ritarma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/12/Text Classification Read notes/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-12T16:44:38+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/12/Text Classification Read notes/" class="leancloud_visitors" data-flag-title>
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  345
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Text-Classification-Read-notes"><a href="#Text-Classification-Read-notes" class="headerlink" title="Text Classification Read notes"></a>Text Classification Read notes</h2><p>解决文本分类的问题<br><strong>流程：</strong></p>
+<p>​    特征提取 -&gt;&gt; (特征降维) &gt;&gt; 分类→评估</p>
+<p><img src="C:\Users\ThinkPad\AppData\Roaming\Typora\typora-user-images\1557644929766.png" alt="1557644929766"></p>
+<p>基于机器学习和深度学习都有一个难以避免的特点，就是模型本身的鲁棒性相对不够，但是处理的问题都十分复杂，对文本的预处理十分重要：</p>
+<h3 id="特征提取与清洗"><a href="#特征提取与清洗" class="headerlink" title="特征提取与清洗"></a>特征提取与清洗</h3><p><strong>文本数据的清洗</strong>：</p>
+<pre><code> 1. 分词：Tokenization
+ 2. 去除意义不大的词语{啊，一，后，前}
+ 3. 大小写问题解决
+ 4. 口语化和简称
+ 5. 降噪{不必要的标点}
+ 6. 语法错误
+ 7. 词语的时态
+ 8. 还原词形
+</code></pre><p><strong>词语的语法分析</strong></p>
+<pre><code>1. N-Gram
+</code></pre><p><strong>加权词语</strong></p>
+<pre><code>1. 词袋模型（不计算顺序与上下文，将所有的 词扔进一个袋子中，附送的都是出现次数，基于单热编码）
+ 2. 词向量模型（神经忘录得到高位向量，具有上下文信息，但是并不能包含长连续全部的语义）
+</code></pre><p>此处注意的事：并不是词向量（word2Vec）就是最好的，在贝叶斯邮件分类，文本分类中，词袋模型的下效率高，仅仅有文章的内容信息，鲁棒性更好</p>
+<h3 id="特征降维"><a href="#特征降维" class="headerlink" title="特征降维"></a>特征降维</h3><ol>
+<li>PCA 主成分分析法应用非常广</li>
+<li>ICA 独立成分分析，在线性的模型中应用多</li>
+<li>LDA ，NMF</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/30/隐马尔克夫模型的一些概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -346,7 +523,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  88
+                  76
                 </span>
               
 
@@ -373,7 +550,7 @@
       
         
           
-            <h3 id="马尔克夫模型的一些概念"><a href="#马尔克夫模型的一些概念" class="headerlink" title="马尔克夫模型的一些概念"></a>马尔克夫模型的一些概念</h3><p><strong>状态链</strong>：小明今天手感主要依靠今天有没有出太阳<br><strong>观察链</strong>：小明今天的胜率<img src="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif" alt="1556604603432"><br><strong>Assumptions</strong>: 小明今天的胜率仅由手感状态决定(天气状态)， 明天的天气只与今天的天气有关<br><strong>Define</strong>：<br>    状态初始概率：</p>
+            <h3 id="马尔克夫模型的一些概念"><a href="#马尔克夫模型的一些概念" class="headerlink" title="马尔克夫模型的一些概念"></a>马尔克夫模型的一些概念</h3><p><strong>状态链</strong>：今天的天气：{Sun, Cloud,Rain}<br><strong>观察链</strong>：今天的干湿度：{Soggy， Damp， Dryish， Dry}<img src="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif" alt="1556604603432"><br><strong>Assumptions</strong>: 今天的干湿度状态决定(天气状态)， 明天的天气只与今天的天气有关<br><strong>Define</strong>：<br>    状态初始概率：</p>
 <script type="math/tex; mode=display">
 \pi_i=P{(y_i = S_i)}  1<i<N</script><p>状态转移概率：</p>
 <script type="math/tex; mode=display">
@@ -1180,7 +1357,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1267,7 +1444,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.3k</span>
+    <span title="Site words total count">1.6k</span>
   
 </div>
 
@@ -1286,7 +1463,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.3k字</span>
+  <span class="post-count">博客全站共1.6k字</span>
 </div>
         
 

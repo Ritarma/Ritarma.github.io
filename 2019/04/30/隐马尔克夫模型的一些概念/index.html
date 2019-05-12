@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="马尔克夫模型的一些概念状态链：小明今天手感主要依靠今天有没有出太阳观察链：小明今天的胜率Assumptions: 小明今天的胜率仅由手感状态决定(天气状态)， 明天的天气只与今天的天气有关Define：    状态初始概率：  \pi_i=P{(y_i = S_i)}  1">
+<meta name="description" content="马尔克夫模型的一些概念状态链：今天的天气：{Sun, Cloud,Rain}观察链：今天的干湿度：{Soggy， Damp， Dryish， Dry}Assumptions: 今天的干湿度状态决定(天气状态)， 明天的天气只与今天的天气有关Define：    状态初始概率：  \pi_i=P{(y_i = S_i)}  1">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="隐马尔克夫模型的一些概念">
 <meta property="og:url" content="http://yoursite.com/2019/04/30/隐马尔克夫模型的一些概念/index.html">
 <meta property="og:site_name" content="Ritarma">
-<meta property="og:description" content="马尔克夫模型的一些概念状态链：小明今天手感主要依靠今天有没有出太阳观察链：小明今天的胜率Assumptions: 小明今天的胜率仅由手感状态决定(天气状态)， 明天的天气只与今天的天气有关Define：    状态初始概率：  \pi_i=P{(y_i = S_i)}  1">
+<meta property="og:description" content="马尔克夫模型的一些概念状态链：今天的天气：{Sun, Cloud,Rain}观察链：今天的干湿度：{Soggy， Damp， Dryish， Dry}Assumptions: 今天的干湿度状态决定(天气状态)， 明天的天气只与今天的天气有关Define：    状态初始概率：  \pi_i=P{(y_i = S_i)}  1">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif">
-<meta property="og:updated_time" content="2019-04-30T08:22:12.106Z">
+<meta property="og:updated_time" content="2019-04-30T08:27:43.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐马尔克夫模型的一些概念">
-<meta name="twitter:description" content="马尔克夫模型的一些概念状态链：小明今天手感主要依靠今天有没有出太阳观察链：小明今天的胜率Assumptions: 小明今天的胜率仅由手感状态决定(天气状态)， 明天的天气只与今天的天气有关Define：    状态初始概率：  \pi_i=P{(y_i = S_i)}  1">
+<meta name="twitter:description" content="马尔克夫模型的一些概念状态链：今天的天气：{Sun, Cloud,Rain}观察链：今天的干湿度：{Soggy， Damp， Dryish， Dry}Assumptions: 今天的干湿度状态决定(天气状态)， 明天的天气只与今天的天气有关Define：    状态初始概率：  \pi_i=P{(y_i = S_i)}  1">
 <meta name="twitter:image" content="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif">
 
 
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  88
+                  76
                 </span>
               
 
@@ -382,7 +382,7 @@
       
 
       
-        <h3 id="马尔克夫模型的一些概念"><a href="#马尔克夫模型的一些概念" class="headerlink" title="马尔克夫模型的一些概念"></a>马尔克夫模型的一些概念</h3><p><strong>状态链</strong>：小明今天手感主要依靠今天有没有出太阳<br><strong>观察链</strong>：小明今天的胜率<img src="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif" alt="1556604603432"><br><strong>Assumptions</strong>: 小明今天的胜率仅由手感状态决定(天气状态)， 明天的天气只与今天的天气有关<br><strong>Define</strong>：<br>    状态初始概率：</p>
+        <h3 id="马尔克夫模型的一些概念"><a href="#马尔克夫模型的一些概念" class="headerlink" title="马尔克夫模型的一些概念"></a>马尔克夫模型的一些概念</h3><p><strong>状态链</strong>：今天的天气：{Sun, Cloud,Rain}<br><strong>观察链</strong>：今天的干湿度：{Soggy， Damp， Dryish， Dry}<img src="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif" alt="1556604603432"><br><strong>Assumptions</strong>: 今天的干湿度状态决定(天气状态)， 明天的天气只与今天的天气有关<br><strong>Define</strong>：<br>    状态初始概率：</p>
 <script type="math/tex; mode=display">
 \pi_i=P{(y_i = S_i)}  1<i<N</script><p>状态转移概率：</p>
 <script type="math/tex; mode=display">
@@ -448,6 +448,10 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/12/Text Classification Read notes/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -531,7 +535,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -634,7 +638,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.3k</span>
+    <span title="Site words total count">1.6k</span>
   
 </div>
 
@@ -653,7 +657,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.3k字</span>
+  <span class="post-count">博客全站共1.6k字</span>
 </div>
         
 
