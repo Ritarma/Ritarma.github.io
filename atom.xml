@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-12T08:44:51.280Z</updated>
+  <updated>2019-05-14T06:34:13.572Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/05/14/HashMap/"/>
+    <id>http://yoursite.com/2019/05/14/HashMap/</id>
+    <published>2019-05-14T06:34:13.427Z</published>
+    <updated>2019-05-14T06:34:13.572Z</updated>
+    
+    <content type="html"><![CDATA[<p>title：Java中的HashMap</p><h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>主要参数： capacity，loadFactor</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Object</span><br><span class="line">  ↳     java.util.AbstractMap&lt;K, V&gt;</span><br><span class="line">         ↳     java.util.HashMap&lt;K, V&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span> </span>&#123; &#125;</span><br></pre></td></tr></table></figure><p> 继承了抽象类AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。</p><p><img src="https://images0.cnblogs.com/blog/497634/201401/280024326252470.jpg" alt="img"></p><p>threshold的值=”容量*加载因子”</p><p>当HashMap中的容量到threshold，重建Hash表，将容量加倍</p><p>table主要存储容器，每个单元Entry都是带hash（int）和next的<key, value>对</key,></p><p><strong>为什么使用hash：</strong> 为了效率</p><p><strong>使用hash会有什么不好的后果</strong> 空间换时间，产生哈希冲突</p><p>HashMap中如何解决这问题：<strong>散列表</strong>—&gt;Entry的next</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;title：Java中的HashMap&lt;/p&gt;
+&lt;h3 id=&quot;HashMap&quot;&gt;&lt;a href=&quot;#HashMap&quot; class=&quot;headerlink&quot; title=&quot;HashMap&quot;&gt;&lt;/a&gt;HashMap&lt;/h3&gt;&lt;p&gt;主要参数： capacity，loadFact
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title></title>
