@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-14T06:47:14.919Z</updated>
+  <updated>2019-08-16T05:08:45.600Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/08/16/logistic%E5%9B%9E%E5%BD%92%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/08/16/logistic回归方法/</id>
+    <published>2019-08-16T05:08:45.482Z</published>
+    <updated>2019-08-16T05:08:45.600Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="logistic回归原理与应用"><a href="#logistic回归原理与应用" class="headerlink" title="logistic回归原理与应用"></a>logistic回归原理与应用</h4><p>——————</p><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>回归分析是确定多种变量关系的一种<strong>统计分析方法</strong>，logistic回归属于线性回归的一种 其特点在于回归的结果是离散的（多为二元分类或预测）</p><h5 id="回归模型"><a href="#回归模型" class="headerlink" title="回归模型"></a>回归模型</h5><p>P(y=0|x)1/（1+e^wx)</p><h5 id="参数求解"><a href="#参数求解" class="headerlink" title="参数求解"></a>参数求解</h5><p>  使用极大似然估计方法求解W</p><h5 id="分类结果"><a href="#分类结果" class="headerlink" title="分类结果"></a>分类结果</h5><p>P（y=1|x）&amp; P(y=0|x)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;logistic回归原理与应用&quot;&gt;&lt;a href=&quot;#logistic回归原理与应用&quot; class=&quot;headerlink&quot; title=&quot;logistic回归原理与应用&quot;&gt;&lt;/a&gt;logistic回归原理与应用&lt;/h4&gt;&lt;p&gt;——————&lt;/p&gt;
+&lt;h5 id=
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Java的HashMap</title>
