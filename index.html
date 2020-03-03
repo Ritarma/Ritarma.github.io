@@ -271,6 +271,372 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/从零开始爬取疫情并云端数据可视化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ritarma Arthur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ritarma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/03/从零开始爬取疫情并云端数据可视化/" itemprop="url">从零开始爬取疫情并云端数据可视化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-03T21:56:13+08:00">
+                2020-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/03/03/从零开始爬取疫情并云端数据可视化/" class="leancloud_visitors" data-flag-title="从零开始爬取疫情并云端数据可视化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.3k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="从零开始爬取疫情并云端数据可视化"><a href="#从零开始爬取疫情并云端数据可视化" class="headerlink" title="从零开始爬取疫情并云端数据可视化"></a>从零开始爬取疫情并云端数据可视化</h1><p>实验OS环境：Win10 /ubuntu 16.04</p>
+<h2 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h2><p>首先需要安装Python， windows版本在Python网站下载 msi安装版 （py3.71）</p>
+<ul>
+<li><p><a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">Win64版本下载网址</a><br><img src="https://img-blog.csdnimg.cn/20181104160256950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3loY2Fk,size_16,color_FFFFFF,t_70" alt="avatar"><br>自动添加环境变量勾选下方“Add Python 3.7 to PATH”<br><img src="https://img-blog.csdnimg.cn/20181104160428746.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3loY2Fk,size_16,color_FFFFFF,t_70" alt="avatar"><br> 手动设置环境变量：在系统环境变量中添加安装路径 (省略号表示安装路径的前缀)<br> ….\Python37\Scripts\;….\Python37\</p>
+</li>
+<li><p><a href="https://www.cnblogs.com/felixwang2/p/9934460.html" target="_blank" rel="noopener">Linux版本教程</a></p>
+</li>
+<li><p>step1：输入python 回车出现下述shell场景表示安装成功， 输入exit()退出</p>
+<p><img src="https://img-blog.csdn.net/20180805234327122?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1ODQ0MDQz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="asd"></p>
+</li>
+</ul>
+<h2 id="安装Streamlit"><a href="#安装Streamlit" class="headerlink" title="安装Streamlit"></a>安装Streamlit</h2><p>streamlit 是第一个专门针对机器学习和数据科学团队的应用开发框架,它是开发自定义机器学习工具的最快的方法，可以调用tornado与其他可视化包的网站框架。<a href="https://www.streamlit.io/" target="_blank" rel="noopener">官网地址</a></p>
+<p>本文使用streamlit的地图可视化官方教程<a href="https://github.com/streamlit/demo-uber-nyc-pickups" target="_blank" rel="noopener">Github</a></p>
+<h3 id="step2-测试安装成果"><a href="#step2-测试安装成果" class="headerlink" title="step2: 测试安装成果"></a>step2: 测试安装成果</h3><ul>
+<li><p>cmd 输入 pip install streamlit， 安装完成后输入streamlit hello 测试是否安装成功，浏览器中进入 <a href="http://localhost:8501" target="_blank" rel="noopener">http://localhost:8501</a> 出现下述场景表示安装完成， cmd中按住ctrl+c可以退出</p>
+<p><img src="https://s2.ax1x.com/2020/03/03/34o3PU.png" alt="34o3PU.png"></p>
+</li>
+<li><p>cmd 输入 pip install json, 完成安装json解析库</p>
+<p><img src="http://blog.hubwiz.com/2019/10/03/streamlit-ml/local-app.png" alt="avatar" style="zoom: 33%;"></p>
+</li>
+</ul>
+<h2 id="在丁香园网上爬取数据"><a href="#在丁香园网上爬取数据" class="headerlink" title="在丁香园网上爬取数据"></a>在丁香园网上爬取数据</h2><h3 id="step3：创建web-get-py文件"><a href="#step3：创建web-get-py文件" class="headerlink" title="step3：创建web_get.py文件"></a>step3：创建web_get.py文件</h3><p>​    需要导入的依赖库有</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> streamlit <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">import</span> pydeck <span class="keyword">as</span> pdk</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
+<h3 id="step4：使用爬虫爬取丁香园数据"><a href="#step4：使用爬虫爬取丁香园数据" class="headerlink" title="step4：使用爬虫爬取丁香园数据"></a>step4：使用爬虫爬取丁香园数据</h3><ul>
+<li>首先在浏览器进入丁香园<a href="https://3g.dxy.cn/newh5/view/pneumonia?scene=2&amp;clicktime=1579596108&amp;enterid=1579596108&amp;from=groupmessage&quot;&quot;&amp;isappinstalled=0" target="_blank" rel="noopener">网址</a> 按下F12查看网页信息，找到数据项藏在<code>&lt;strip id = &quot;window.getAreaStat&quot;&gt;&lt;/strip&gt;</code>中</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2020/03/03/34otM9.png" alt="34otM9.png"></p>
+<ul>
+<li><p>写一个正则表达式，将中间的数据提取出来<br><code>want = re.compile(r&#39; window.getAreaStat.*?&lt;/script&gt;&#39;, re.S)</code></p>
+</li>
+<li><p>对html进行匹配得到数据，并转化为string格式</p>
+<p><code>result = want.findall(str(html.decode(&quot;utf-8&quot;)))</code></p>
+</li>
+<li><p>此时的结果是字符串格式的</p>
+</li>
+<li><p>需要对数据处理，将不必要的符号和其他的无意义单词去除</p>
+</li>
+<li><p>将字符串转化为json格式：</p>
+<p><code>json.loads(result)</code></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data_from_web</span><span class="params">()</span>:</span></span><br><span class="line">    user_agent = <span class="string">"ritarma/1.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"</span></span><br><span class="line">    headers = &#123;<span class="string">"User-Agent"</span>: user_agent&#125;</span><br><span class="line">    req = request.Request(</span><br><span class="line">        <span class="string">"https://3g.dxy.cn/newh5/view/pneumonia?scene=2&amp;clicktime=1579596108&amp;enterid=1579596108&amp;from=groupmessage"</span></span><br><span class="line">        <span class="string">"&amp;isappinstalled=0"</span>,</span><br><span class="line">        headers=headers)</span><br><span class="line">    resp = request.urlopen(req)</span><br><span class="line">    <span class="comment"># 打开页面</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = resp.read()</span><br><span class="line">    <span class="keyword">except</span> http.client.IncompleteRead <span class="keyword">as</span> e:</span><br><span class="line">        html = e.partial</span><br><span class="line"></span><br><span class="line">    want = re.compile(<span class="string">r' window.getAreaStat.*?&lt;/script&gt;'</span>, re.S)</span><br><span class="line">    result = want.findall(str(html.decode(<span class="string">"utf-8"</span>)))</span><br><span class="line">    result = str(result).replace(<span class="string">" "</span>, <span class="string">""</span>)</span><br><span class="line">    <span class="comment"># 处理结果</span></span><br><span class="line">    result_p = result</span><br><span class="line">    <span class="comment"># print('处理结果:',result)</span></span><br><span class="line">    result_p = result_p.replace(<span class="string">']&#125;catch(e)&#123;&#125;&lt;/script&gt;'</span>, <span class="string">" "</span>)</span><br><span class="line">    result_p = result_p.replace(<span class="string">'&#125;'</span>, <span class="string">"&#125;\n"</span>)</span><br><span class="line">    result_p = result_p.replace(<span class="string">'window.getAreaStat=['</span>, <span class="string">" "</span>)</span><br><span class="line">    result_p = result_p.replace(<span class="string">"[' "</span>, <span class="string">""</span>)</span><br><span class="line">    result_p = result_p.replace(<span class="string">" ']"</span>, <span class="string">""</span>)</span><br><span class="line">    json_output = json.loads(<span class="string">'['</span> + result_p + <span class="string">']'</span>)</span><br><span class="line">    <span class="keyword">return</span> json_output</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<h2 id="地图可视化"><a href="#地图可视化" class="headerlink" title="地图可视化"></a>地图可视化</h2><h3 id="step5：转化数据格式，"><a href="#step5：转化数据格式，" class="headerlink" title="step5：转化数据格式，"></a>step5：转化数据格式，</h3><p>​    分析json格式的输出，里面的格式是字典类型的映射，获得省份的数据使用<code>data[&#39;provinceName&#39;]</code>获得各个城市的确诊人数<code>data[&#39;provinceName&#39;][&#39;cities&#39;][&#39;confirmedCount&#39;]</code>， 此时只有当前省份和城市的数据，要在地图上是可视化需要得到各个城市的地理坐标（经纬度信息）</p>
+<p>​    在pyecharts中查询地理坐标需要导入中国城市的地图包，本文使用一个带有全国地理信息的json文件作为原始信息，并对该文件解析，得到各个城市的地理位置信息。该json文件来源于网络，需要对一些不规则的结构略作处理，并对地名找不到的异常处理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_lat_by_name</span><span class="params">(name: str, pos_dic)</span>:</span></span><br><span class="line">    pos_data = str(pos_dic[name]).split(<span class="string">','</span>)</span><br><span class="line">    lat = float(pos_data[<span class="number">0</span>])</span><br><span class="line">    lon = float(pos_data[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> lat, lon</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_pos_by_json</span><span class="params">(url=<span class="string">'geo_info/geoinfo-all.json'</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    get all cities position form json file</span></span><br><span class="line"><span class="string">    :return: dictionary of [cityName, (lat, lon)]</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">with</span> open(url, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        all_city_pos = json.loads(f.read())</span><br><span class="line">    pos_dic = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> province <span class="keyword">in</span> all_city_pos:</span><br><span class="line">        <span class="comment"># pos_dic.update(&#123;province['name'].replace('市', ''): province['center']&#125;)</span></span><br><span class="line">        pos_dic.update(&#123;province[<span class="string">'name'</span>]: province[<span class="string">'center'</span>]&#125;)</span><br><span class="line">        <span class="keyword">if</span> province[<span class="string">'name'</span>] != <span class="string">'重庆市'</span>:</span><br><span class="line">            <span class="keyword">for</span> city <span class="keyword">in</span> province[<span class="string">'districts'</span>]:</span><br><span class="line">                pos_dic.update(&#123;city[<span class="string">'name'</span>].replace(<span class="string">'市'</span>, <span class="string">''</span>): city[<span class="string">'center'</span>]&#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> city <span class="keyword">in</span> province[<span class="string">'districts'</span>]:</span><br><span class="line">                <span class="keyword">for</span> districts <span class="keyword">in</span> city[<span class="string">'districts'</span>]:</span><br><span class="line">                    pos_dic.update(&#123;districts[<span class="string">'name'</span>]: districts[<span class="string">'center'</span>]&#125;)</span><br><span class="line">    <span class="keyword">return</span> pos_dic</span><br></pre></td></tr></table></figure>
+<p>转化为需要的格式[cityName, counts, latitude, longitude]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cities_data</span><span class="params">(json_output, pos_dic)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    get all cities data form json and position dictionary</span></span><br><span class="line"><span class="string">    :return: list of [lat, lon, cityName, counts]</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    city_list = []</span><br><span class="line">    <span class="keyword">for</span> province <span class="keyword">in</span> json_output:</span><br><span class="line">        <span class="keyword">if</span> province[<span class="string">'provinceName'</span>] == <span class="string">'台湾'</span>:</span><br><span class="line">            lat, lon = get_lat_by_name(province[<span class="string">'provinceName'</span>], pos_dic)</span><br><span class="line">            city_list.append([lat, lon, province[<span class="string">'provinceName'</span>], province[<span class="string">'confirmedCount'</span>]])</span><br><span class="line">        <span class="keyword">for</span> city <span class="keyword">in</span> province[<span class="string">'cities'</span>]:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                lat, lon = get_lat_by_name(city[<span class="string">'cityName'</span>], pos_dic)</span><br><span class="line">                city_list.append([lat, lon, city[<span class="string">'cityName'</span>], city[<span class="string">'confirmedCount'</span>]])</span><br><span class="line">            <span class="keyword">except</span> KeyError:</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    lat, lon = get_lat_by_name(city[<span class="string">'cityName'</span> + <span class="string">'区'</span>], pos_dic)</span><br><span class="line">                    city_list.append([lat, lon, city[<span class="string">'cityName'</span>], city[<span class="string">'confirmedCount'</span>]])</span><br><span class="line">                <span class="keyword">except</span> KeyError:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> city_list</span><br></pre></td></tr></table></figure>
+<p>​    最后将数据转化Pandas包的DataFrame 格式</p>
+<p><code>data = get_cities_data(get_data_from_web(), get_pos_by_json())</code></p>
+<p><code>data = pd.DataFrame(data, columns=[&#39;lat&#39;, &#39;lon&#39;, &#39;cityName&#39;, &#39;counts&#39;])</code></p>
+<h3 id="step6-可视化"><a href="#step6-可视化" class="headerlink" title="step6: 可视化"></a>step6: 可视化</h3><p>  streamlit 使用的数据可视化包是Uber团队开发的开源地图<a href="https://github.com/uber/deck.gl" target="_blank" rel="noopener">deck.gl</a> 在安装streamlit的同时已经附带安装了deckgl的python封装库pydeck。</p>
+<p>​    此时直接将数据输入pydeck的接口中不能完全显示，需要先定义一个摄像机观察位置</p>
+<p>​        <code>view_point= [32.33, 113.32]</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># initial view state ：</span></span><br><span class="line">view_state = pdk.ViewState(latitude=view_point[<span class="number">0</span>], longitude=view_point[<span class="number">1</span>], zoom=<span class="number">4</span>, pitch=<span class="number">40</span>, bearing=<span class="number">-27.36</span>)</span><br><span class="line"></span><br><span class="line">column_layer = pdk.Layer(</span><br><span class="line">    <span class="string">"ColumnLayer"</span>,</span><br><span class="line">    data=city_data,</span><br><span class="line">    get_position=[<span class="string">"lat"</span>, <span class="string">"lon"</span>],</span><br><span class="line">    radius=<span class="number">15000</span>,</span><br><span class="line">    diskResolution=<span class="number">24</span>,</span><br><span class="line">    elevation_scale=<span class="number">90</span>,</span><br><span class="line">    elevation_range=[<span class="number">0</span>, <span class="number">10000</span>],</span><br><span class="line">    getElevation=<span class="string">'counts'</span>,</span><br><span class="line">    getFillColor=<span class="string">'[48, 128, counts*3, 225]'</span>,</span><br><span class="line">    getLineColor=[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    pickable=<span class="literal">True</span>,</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">st.write(pdk.Deck(</span><br><span class="line">    map_style=<span class="string">"mapbox://styles/mapbox/dark-v10"</span>,</span><br><span class="line">    initial_view_state=view_state,</span><br><span class="line">    layers=[column_layer],</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+<p>在当前的python文件路径下使用cmd输入</p>
+<p><code>streamlit run  you_file_name.py</code></p>
+<h3 id="step7-浏览器打开网址loacalhost：8501"><a href="#step7-浏览器打开网址loacalhost：8501" class="headerlink" title="step7: 浏览器打开网址loacalhost：8501"></a>step7: 浏览器打开<a href="loacalhost：8501">网址loacalhost：8501</a></h3><p><img src="https://s2.ax1x.com/2020/03/03/34oUq1.png" alt="avatar"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd下输入 ctrl+c 可以退出</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/交叉熵与基于交叉熵的损失函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ritarma Arthur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ritarma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/16/交叉熵与基于交叉熵的损失函数/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-16T14:34:10+08:00">
+                2019-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/08/16/交叉熵与基于交叉熵的损失函数/" class="leancloud_visitors" data-flag-title>
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  48
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>交叉熵与基于交叉熵的损失函数</p>
+<h4 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h4><p>概念：首先解释解信息熵：<strong>信息熵是用来消除不确定性所需信息的度量</strong>，W（）CA</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/logistic回归方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -871,7 +1237,8 @@
       
         
           
-            <h3 id="马尔克夫模型的一些概念"><a href="#马尔克夫模型的一些概念" class="headerlink" title="马尔克夫模型的一些概念"></a>马尔克夫模型的一些概念</h3><p><strong>状态链</strong>：今天的天气：{Sun, Cloud,Rain}<br><strong>观察链</strong>：今天的干湿度：{Soggy， Damp， Dryish， Dry}<img src="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif" alt="1556604603432"><br><strong>Assumptions</strong>: 今天的干湿度状态决定(天气状态)， 明天的天气只与今天的天气有关<br><strong>Define</strong>：<br>    状态初始概率：</p>
+            <h3 id="马尔克夫模型的一些概念"><a href="#马尔克夫模型的一些概念" class="headerlink" title="马尔克夫模型的一些概念"></a>马尔克夫模型的一些概念</h3><p><strong>状态链</strong>：今天的天气：{Sun, Cloud,Rain}<br><strong>观察链</strong>：今天的干湿度：{Soggy， Damp， Dryish， Dry}</p>
+<p><img src="http://www.leexiang.com/wp-content/uploads/ckfinder/images/hidden-weather-example.gif" alt="1556604603432"><br><strong>Assumptions</strong>: 今天的干湿度状态决定(天气状态)， 明天的天气只与今天的天气有关<br><strong>Define</strong>：<br>    状态初始概率：</p>
 <script type="math/tex; mode=display">
 \pi_i=P{(y_i = S_i)}  1<i<N</script><p>状态转移概率：</p>
 <script type="math/tex; mode=display">
@@ -1678,7 +2045,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1691,7 +2058,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1751,7 +2118,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1765,7 +2132,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.9k</span>
+    <span title="Site words total count">3.2k</span>
   
 </div>
 
@@ -1784,7 +2151,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.9k字</span>
+  <span class="post-count">博客全站共3.2k字</span>
 </div>
         
 
