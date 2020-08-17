@@ -271,6 +271,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/分治算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ritarma Arthur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ritarma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/17/分治算法/" itemprop="url">分治算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-17T20:12:38+08:00">
+                2020-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/08/17/分治算法/" class="leancloud_visitors" data-flag-title="分治算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.2k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="分治算法："><a href="#分治算法：" class="headerlink" title="分治算法："></a>分治算法：</h1><p>what: 是一个将母问题分为<strong>相同</strong>子问题来简化计算的算法</p>
+<p>How: 基本有三步， </p>
+<ol>
+<li>将问题转化为相同的小问题</li>
+<li>递归解相同的小问题</li>
+<li>将上述小问题的结果综合并返回</li>
+</ol>
+<p>Why:</p>
+<p>​        主要是重复利用堆栈，效率上的提升主要是针对计算数量级逐级快速递增的，解决的问题主要是计算量大</p>
+<h3 id="POW-X-n"><a href="#POW-X-n" class="headerlink" title="POW(X,n)"></a>POW(X,n)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myPow</span><span class="params">(self, x: float, n: int)</span> -&gt; float:</span></span><br><span class="line">        <span class="comment"># 数据预处理</span></span><br><span class="line">        res = <span class="number">1.0</span> </span><br><span class="line">        <span class="keyword">if</span> n ==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">if</span> n &lt; <span class="number">0</span>:</span><br><span class="line">            x = <span class="number">1</span> /x</span><br><span class="line">            n = -n </span><br><span class="line">        <span class="comment"># 问题划分</span></span><br><span class="line">        <span class="keyword">if</span> n%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            res = self.myPow(x*x, n/<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res1 = self.myPow(x, n<span class="number">-1</span>)</span><br><span class="line">            <span class="comment"># 集合所有的结果</span></span><br><span class="line">            res = res1*x</span><br><span class="line">            <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>​    从解决问题的角度，算法只用</p>
+<p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myPow</span><span class="params">(self, x: float, n: int)</span> -&gt; float:</span></span><br><span class="line">    <span class="comment"># 数据预处理</span></span><br><span class="line">    res = <span class="number">1.0</span> </span><br><span class="line">    <span class="keyword">if</span> n ==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">0</span>:</span><br><span class="line">        x = <span class="number">1</span> /x</span><br><span class="line">        n = -n </span><br><span class="line">    <span class="comment"># 问题划分</span></span><br><span class="line">    res1 = self.myPow(x, n<span class="number">-1</span>)</span><br><span class="line">    <span class="comment"># 集合所有的结果</span></span><br><span class="line">    res = res1*x</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>但是会导致一个问题</p>
+<p>​    递归的栈爆了，采取稍微减少点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myPow</span><span class="params">(self, x: float, n: int)</span> -&gt; float:</span></span><br><span class="line">    <span class="comment"># 数据预处理</span></span><br><span class="line">    res = <span class="number">1.0</span> </span><br><span class="line">    <span class="keyword">if</span> n ==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">-1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.0</span>/x</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">0</span>:</span><br><span class="line">        x = <span class="number">1</span> /x</span><br><span class="line">        n = -n </span><br><span class="line">    <span class="comment"># 问题划分</span></span><br><span class="line">    <span class="keyword">if</span> n%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        res = self.myPow(x*x, n//<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res1 = self.myPow(x*x, (n<span class="number">-1</span>)//<span class="number">2</span>)</span><br><span class="line">        <span class="comment"># 集合所有的结果</span></span><br><span class="line">        res = res1*x</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h4 id="53-最大子序和"><a href="#53-最大子序和" class="headerlink" title="53. 最大子序和"></a><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">53. 最大子序和</a></h4><p>分治思路：</p>
+<p>一个序列中的最大子序列和可以分为三个部分， 左半部分的子序列和，右半部分的子序列和，从中间开始的最大子序和</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># 结束条件</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> nums <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> len(nums) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="comment"># 划分子问题</span></span><br><span class="line">        max_sum_l = self.maxSubArray(nums[:len(nums)//<span class="number">2</span>])</span><br><span class="line">        max_sum_r = self.maxSubArray(nums[len(nums)//<span class="number">2</span>:])</span><br><span class="line">        <span class="comment"># 从中间开始</span></span><br><span class="line">        m_left = nums[len(nums)//<span class="number">2</span> - <span class="number">1</span>]</span><br><span class="line">        m_right = nums[len(nums)//<span class="number">2</span>]</span><br><span class="line">        temp = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)//<span class="number">2</span> - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            temp += nums[i]</span><br><span class="line">            m_left = max(m_left, temp)</span><br><span class="line">        temp = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)//<span class="number">2</span>, len(nums)):</span><br><span class="line">            temp += nums[i]</span><br><span class="line">            m_right = max(m_right, temp)</span><br><span class="line">        <span class="keyword">return</span> max(max_sum_l, max_sum_r, m_right+m_left)</span><br></pre></td></tr></table></figure>
+<p>这个算法不是很好，计算的复杂度还是O（n）的，因为每一次的决策是否加入后面的序列可以根据上一次的计算结果，采用动态规划也可以， 提前算好每一次前几个序列和和，还可以减少空间复杂度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        dp = [<span class="number">0</span>] * len(nums)</span><br><span class="line">        <span class="comment"># 存储每一步的最优结果</span></span><br><span class="line">        dp[<span class="number">0</span>] = nums[<span class="number">0</span>]</span><br><span class="line">        max_num = nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</span><br><span class="line">            <span class="comment"># 对于每一次更新加入i个数字后的序列的最佳子序列和</span></span><br><span class="line">            dp[i] = max(dp[i<span class="number">-1</span>]+nums[i], nums[i])</span><br><span class="line">            <span class="keyword">if</span> dp[i] &gt; max_num:</span><br><span class="line">                max_num = dp[i]</span><br><span class="line">        <span class="keyword">return</span> max_num</span><br></pre></td></tr></table></figure>
+<h4 id="169-多数元素"><a href="#169-多数元素" class="headerlink" title="169. 多数元素"></a><a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">169. 多数元素</a></h4><p>​    对于这种求出现次数的问题，python中collection模块中的Count 很好用,  但是本文没有使用该方法，一个简单的思路是用一个dict来统计出现的次数，然后便利这个字典求出最大次数的即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        table = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> table.keys():</span><br><span class="line">                table[i] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                table[i] = <span class="number">1</span></span><br><span class="line">        max_freq = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> table.keys():</span><br><span class="line">            <span class="keyword">if</span> table[key] &gt; max_freq:</span><br><span class="line">                max_freq = table[key]</span><br><span class="line">                temp = key</span><br><span class="line">        <span class="keyword">return</span> temp</span><br></pre></td></tr></table></figure>
+<p>但是这个不是我们的目标，我们的目标是学会利用分治的思想</p>
+<p>传统的分治思想对于数组来说，基本上就是从空间上划数组的范围达到分解问题再组合，这个题目其实利用了一个假设，就是如果一个数字出现的次数最多，要么在左边数量最多，要么在右边数量最多</p>
+<p>按照这个假设就可以做题了，首先分为两个部分，然后再来求两边的哪一个最大，如果分到只剩下这一个就返回这个数值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span><span class="params">(self, nums)</span> -&gt; int:</span></span><br><span class="line">    <span class="keyword">if</span> nums <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> len(nums) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">    left = self.majorityElement(nums[: len(nums) // <span class="number">2</span>])</span><br><span class="line">    right = self.majorityElement(nums[len(nums) // <span class="number">2</span>:])</span><br><span class="line">    <span class="keyword">if</span> right == left:</span><br><span class="line">        <span class="keyword">return</span> right</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># N+N</span></span><br><span class="line">        <span class="keyword">return</span> right <span class="keyword">if</span> nums.count(right) &gt; nums.count(left) <span class="keyword">else</span> left</span><br></pre></td></tr></table></figure>
+<p>使用分治的算法其实相比哈希的方法更慢，因为最后都有个查询次数的遍历，反而计算量更大</p>
+<p>最佳的办法还是使用Conter 方法最快，然后使用most_commen 函数找最常见的，然后返回</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span><span class="params">(self, nums)</span> -&gt; int:</span></span><br><span class="line">        c = Counter(nums)</span><br><span class="line">        <span class="keyword">return</span> c.most_common(<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>还有利用条件n/2 的，先排序再取中间值，虽然速度很快，但是计算复杂度是nlog(n)的，速度快只是运气好主频高而已</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/从零开始爬取疫情并云端数据可视化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1886,7 +2071,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1899,7 +2084,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1973,7 +2158,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">3.1k</span>
+    <span title="Site words total count">4.3k</span>
   
 </div>
 
@@ -1992,7 +2177,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.1k字</span>
+  <span class="post-count">博客全站共4.3k字</span>
 </div>
         
 
