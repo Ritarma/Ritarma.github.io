@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ritarma" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="动态规划动态规划：结合了分治思想和回溯思想的一种动态解决子问题的方法，本质是一个问题由多个子问题组合 WHY：相对于朴素解法，由于可以利用子问题的结果来简化下一子问题的计算，计算复杂度的提升巨大，同时采用了类似回溯的方法来剪枝 HOW：使用DP 需要有一个状态转移的概念，不一定要非常格式化的按照DP的状态转移方程来思考，但是得有状态转移的一个列表 300. 最长上升子序列本题相对最长连续子序列减少">
+<meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分治算法">
+<meta property="og:url" content="http://yoursite.com/2020/08/22/动态规划/index.html">
+<meta property="og:site_name" content="Ritarma">
+<meta property="og:description" content="动态规划动态规划：结合了分治思想和回溯思想的一种动态解决子问题的方法，本质是一个问题由多个子问题组合 WHY：相对于朴素解法，由于可以利用子问题的结果来简化下一子问题的计算，计算复杂度的提升巨大，同时采用了类似回溯的方法来剪枝 HOW：使用DP 需要有一个状态转移的概念，不一定要非常格式化的按照DP的状态转移方程来思考，但是得有状态转移的一个列表 300. 最长上升子序列本题相对最长连续子序列减少">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-23T15:59:00.526Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分治算法">
+<meta name="twitter:description" content="动态规划动态规划：结合了分治思想和回溯思想的一种动态解决子问题的方法，本质是一个问题由多个子问题组合 WHY：相对于朴素解法，由于可以利用子问题的结果来简化下一子问题的计算，计算复杂度的提升巨大，同时采用了类似回溯的方法来剪枝 HOW：使用DP 需要有一个状态转移的概念，不一定要非常格式化的按照DP的状态转移方程来思考，但是得有状态转移的一个列表 300. 最长上升子序列本题相对最长连续子序列减少">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/22/动态规划/">
+
+
+
+
+
+  <title>分治算法 | Ritarma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/Ritarma" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ritarma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/22/动态规划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ritarma Arthur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ritarma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">分治算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-22T15:33:28+08:00">
+                2020-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/08/22/动态规划/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/08/22/动态规划/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/08/22/动态规划/" class="leancloud_visitors" data-flag-title="分治算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.6k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>动态规划：结合了分治思想和回溯思想的一种动态解决子问题的方法，本质是一个问题由多个子问题组合</p>
+<p>WHY：相对于朴素解法，由于可以利用子问题的结果来简化下一子问题的计算，计算复杂度的提升巨大，同时采用了类似回溯的方法来剪枝</p>
+<p>HOW：使用DP 需要有一个状态转移的概念，不一定要非常格式化的按照DP的状态转移方程来思考，但是得有状态转移的一个列表</p>
+<h2 id="300-最长上升子序列"><a href="#300-最长上升子序列" class="headerlink" title="300. 最长上升子序列"></a><a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">300. 最长上升子序列</a></h2><p>本题相对最长连续子序列减少了连续的条件，由于有多种组合导致回溯的情况问题的时间复杂度预计应该是在O（NlogN）， 是典型的数组问题，使用指针的思维实现</p>
+<p>如果存在一个最优子序列，那么包含该seq的所有seq（不超过原序列）的最优解都是这个seq的长度</p>
+<pre><code>### 单步
+</code></pre><p> 思考一个单步过程，对每一个数字，都查找以后的是否有比这个数字大的，如果有说明存在以这个数字开头的上升序列，更新子序列最大的数字，但是这个最大数字并非是最优的，可能存在一个比这个最大数字小，但是比上一个的数字大的，例如【2，5，4，3，。。】此时子序列的最大数字应该是3而不是5</p>
+<p>遍历完可以找到一个子序列，计算长度就可以了。这个算法的计算复杂度是N^2</p>
+<p>可以简单的写一个伪代码，了解题目意思;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lengthOfLIS</span><span class="params">(self, nums)</span> -&gt; int:</span></span><br><span class="line">    max_len = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> max_len</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">        tmp_max_num = nums[i]</span><br><span class="line">        tmp_max_num2 = nums[i]</span><br><span class="line">        res = []</span><br><span class="line">        res.append(tmp_max_num)</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, len(nums), <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; tmp_max_num:</span><br><span class="line">                tmp_max_num2 = tmp_max_num</span><br><span class="line">                tmp_max_num = nums[j]</span><br><span class="line">                res.append(nums[j])</span><br><span class="line">                <span class="keyword">elif</span> nums[j] &gt; tmp_max_num2:</span><br><span class="line">                    res.remove(tmp_max_num)</span><br><span class="line">                    res.append(nums[j])</span><br><span class="line">                    tmp_max_num = nums[j]</span><br><span class="line">		max_len = max(max_len, len(res))</span><br><span class="line">	<span class="keyword">return</span> max_len</span><br></pre></td></tr></table></figure>
+<p>这个算法N2 的复杂度，时间是1044ms</p>
+<p>思考一个更优化的的动态规划算法单步执行，对于数字的分治方法，都是将一个长的数组转化为多个小数组（子序列），并将子问题的答案存在一个dp[]中，然后对这个dp数组处理得到result</p>
+<p>再优化一下，由于原数组很长，但是维护的res数组很短，而且反复申请空间消耗的时间很长，干脆每一次遍历的时候都找一下有序数组res里面有没有比这个数字更大的数字，如果没有就说明这个是子序列的最大值，有就替换一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lengthOfLIS</span><span class="params">(self, nums)</span> -&gt; int:</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> nums <span class="keyword">or</span> <span class="keyword">not</span> len(nums):</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">       records = []</span><br><span class="line">       records.append(nums[<span class="number">0</span>])</span><br><span class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</span><br><span class="line">           <span class="keyword">if</span> nums[i]&gt;records[<span class="number">-1</span>]:</span><br><span class="line">               records.append(nums[i])</span><br><span class="line">           <span class="keyword">else</span>:</span><br><span class="line">               j = len(records)<span class="number">-1</span></span><br><span class="line">               <span class="keyword">while</span> j&gt;=<span class="number">0</span>:</span><br><span class="line">                   <span class="keyword">if</span> records[j]&gt;=nums[i]:</span><br><span class="line">                       j-=<span class="number">1</span></span><br><span class="line">                   <span class="keyword">else</span>:</span><br><span class="line">                       <span class="keyword">break</span></span><br><span class="line">               records[j+<span class="number">1</span>]=nums[i]</span><br><span class="line">       <span class="keyword">return</span> len(records)</span><br></pre></td></tr></table></figure>
+<p>时间50ms</p>
+<h2 id="674-最长连续递增序列"><a href="#674-最长连续递增序列" class="headerlink" title="674. 最长连续递增序列"></a><a href="https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/" target="_blank" rel="noopener">674. 最长连续递增序列</a></h2><p>这个问题相对上一个更加简单，遍历就完事了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findLengthOfLCIS</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        max_len = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> nums <span class="keyword">is</span> <span class="literal">None</span> : <span class="keyword">return</span> max_len</span><br><span class="line">        <span class="keyword">if</span> len(nums) &gt; <span class="number">1</span> :</span><br><span class="line">            max_len += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> len(nums) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        max_all = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i<span class="number">-1</span>]:</span><br><span class="line">                max_len += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                max_len = <span class="number">1</span></span><br><span class="line">            max_all = max(max_all, max_len)</span><br><span class="line">        <span class="keyword">return</span> max_all</span><br></pre></td></tr></table></figure>
+<p>用上动态规划，就是把每一回找到的连续数组的长度用一个dp【】来保存，此时对于每一个子序列都求一个最大长度，求解每一个，但是这个小问题有点浪费内存</p>
+<h2 id="5-最长回文子串"><a href="#5-最长回文子串" class="headerlink" title=" 5. 最长回文子串"></a><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener"> 5. 最长回文子串</a></h2><p>DP经典问题，题目还是子序列的求最优化的问题，一般都有多项式级别的暴力解，子序列不同的序列头和序列尾可以生成<code>n(n-1)/2</code>个子序列，只要对每个子序列判断一次是否回文即可</p>
+<p>分析一个序列判断回文的单步：</p>
+<p>1， 分析是否头尾相同</p>
+<p>2， 然后while 逐步分析两段是否相同</p>
+<p>3，直到两个指针指向同一个或者只相差1个位置结束</p>
+<p>暴力算法的复杂度是N^3，考虑使用动态规划来简化</p>
+<p>可以定义一个<code>dp[i][j]</code>为一个从位置<code>i</code>到位置<code>j</code>的一个子序列是否是回文。</p>
+<p>这个看起来是很简单的过程，但是问题其实可以思考到每一个子序列存在相关性，字串不是回文，那么父亲序列绝对不是回文，但是一个子序列若是回文，那它的下一位父亲序列<code>s[i-1]到[j+1]</code>还要判断多出来的<code>s[i-1] == [j+1]</code>就知道是不是回文了，这就是一个递推的一个状态过程</p>
+<p> 不断的找序列然后找到j-i 最大的那个存在回文的序列即是最长的回文子串</p>
+<p>分析一个单步过程：</p>
+<p>对于每一个子串i， j=i+n, (n)表示长度为n， n必须满足小于总长len-i-1</p>
+<ol>
+<li>如果n==0 表示只有字串一位肯定是满足的，n==1, 判断是否<code>s[i]==s[j]</code>相等就是<code>aa</code>这种情况，也是满足的</li>
+<li>如果都不满足说明，长度超过1了，那么需要判断它的字串的状态<code>dp[i+1][j-1]</code>和<code>s[i]==s[j]</code> 两者同时成立才可以。</li>
+<li>如果上一条的情况都成立，说明新父亲串是一个回文，此时判断长度是否大于当前最大的回文串是否要更新就行</li>
+</ol>
+<p>最后返回最长串的回文字符串</p>
+<p>运行时间：4644ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s: str)</span> -&gt; str:</span></span><br><span class="line">        len_s = len(s)</span><br><span class="line">        res = <span class="string">''</span></span><br><span class="line">        max_len = <span class="number">0</span></span><br><span class="line">        dp = [[<span class="literal">False</span>] * len_s <span class="keyword">for</span> _ <span class="keyword">in</span> range(len_s)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len_s<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">for</span> n <span class="keyword">in</span> range(len_s - i):</span><br><span class="line">                j = i+n</span><br><span class="line">                <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">                    dp[i][j] = <span class="literal">True</span></span><br><span class="line">                <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">                    dp[i][j] = <span class="literal">True</span> <span class="keyword">if</span> s[i] == s[j] <span class="keyword">else</span> <span class="literal">False</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[i][j] = (dp[i+<span class="number">1</span>][j<span class="number">-1</span>] <span class="keyword">and</span> s[i] == s[j])</span><br><span class="line">                <span class="keyword">if</span> dp[i][j] <span class="keyword">and</span> n+<span class="number">1</span> &gt; max_len:</span><br><span class="line">                    max_len = n+<span class="number">1</span></span><br><span class="line">                    res = s[i:j+<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>速度很慢，主要字符串的长度太长，可以采用Manacher 优化到o(N) 有空自再思考</p>
+<h2 id="516-最长回文子序列"><a href="#516-最长回文子序列" class="headerlink" title="516. 最长回文子序列"></a><a href="https://leetcode-cn.com/problems/longest-palindromic-subsequence/" target="_blank" rel="noopener">516. 最长回文子序列</a></h2><p>   相比于上题，减少了连续的条件，此时生成的回文可以不用连续，子序列的数量没有增加，但是要判断的内容变化了， 之前是一次两步长的判断，现在是一次左右可以多步</p>
+<p>使用DP的方法，矩阵的数量可以不用改变，但是状态转换的递归条件发生了变化</p>
+<p>   之前是只判断子序列是否为回文，由于序列的最大回文存在，数量肯定是在最长的序列</p>
+<p>​    <strong>此时DP矩阵中存储的是数值， 表示此时子序列（问题）的最大回文长度</strong></p>
+<p><strong>状态转移过程</strong>：如果满足<code>s[i]==s[j]</code>（‘abba’） 此时的序列相对于<code>dp[i+1][j-1]</code>对应的序列（‘bb’）多两个长度，</p>
+<p>​    如果不满足条件（‘abbc’）此时的序列就是比较子序列<code>dp[i][j-1]</code>（‘abb’）和<code>dp[i+1][j]</code>（‘bbc’）两个谁更大，如果都一样，说明增加的没有区别，不一样说明长度增加了，需要注意要从右下角开始往上遍历，因为每次都需要利用的子序列位于矩阵的左下脚<code>dp[i + 1][j - 1]</code>，左边<code>dp[i][j - 1]</code>，下边<code>dp[i+1][j]</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindromeSubseq</span><span class="params">(self, s: str)</span> -&gt; int:</span></span><br><span class="line">        len_s = len(s)</span><br><span class="line">        dp = [[<span class="number">0</span>] * len_s <span class="keyword">for</span> _ <span class="keyword">in</span> range(len_s)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len_s):</span><br><span class="line">            dp[i][i] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len_s, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, len_s):</span><br><span class="line">                <span class="comment"># print(s[i:j+1])</span></span><br><span class="line">                <span class="keyword">if</span> s[i] == s[j]:</span><br><span class="line">                    dp[i][j] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">2</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[i][j] = max(dp[i][j - <span class="number">1</span>], dp[i + <span class="number">1</span>][j])</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<p>运行时间1512 ms</p>
+<h2 id="72-编辑距离"><a href="#72-编辑距离" class="headerlink" title="72. 编辑距离"></a><a href="https://leetcode-cn.com/problems/edit-distance/" target="_blank" rel="noopener">72. 编辑距离</a></h2><p>DP中较难的题，编辑距离又叫levenshtein长度，在字符串匹配库，搜索引擎elastic search内都有应用，复杂度最低应该O（mn），表示至少每个字符都对比一下，一般使用C实现库再调用</p>
+<p>存在三种方法编辑，编辑距离为1的情况是<code>len*(2+26)</code>， 能编辑的字符串数量是指数增长的，暴力法就不太可能实现了</p>
+<p>一个初步的思考是编辑距离为2的序列中间过程应该是由距离为1的再来了一次距离为1的过程，这应该要用递归来做</p>
+<p>思考word1 和word2 可能有子问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ho -&gt; ro	ho -&gt; ros 	ho -&gt; rose</span><br><span class="line">			hor -&gt; ros	hor -&gt; rose	</span><br><span class="line">						hors -&gt; rose</span><br><span class="line">						horse -&gt; rose</span><br></pre></td></tr></table></figure>
+<p>但是这个开头都是固定的，但是很明显开头和结尾都不是固定的，像or-&gt; ro这样的子问题也可能出现</p>
+<p>可以设置<code>dp[i][j]</code>表示字符长度为<code>i</code>的字符串和长度为<code>j</code>的字符串的最短编辑距离，那对于一个单步过程，如果<code>dp[i][i]</code>是0时，说明第i个前面都是一样的</p>
+<ol>
+<li>判断s1[i+1]和s2[j+1]是否相等，如果相等说明两个指针各进一步不影响结果</li>
+<li>如果不等就需要判断这一次的状态改变是如何导致<code>dp[i+1][j+1]</code>变化</li>
+<li>判断<strong>插入</strong>操作，当我们在word1中插入一个和word2一样的字符，那么word2就被匹配了，所以可以直接表示为<code>dp[i][j-1]+1</code> 对于<strong>删除</strong>操作，直接表示为<code>dp[i-1][j]+1</code> 对于<strong>替换</strong>操作，直接表示为<code>dp[i-1][j-1]+1</code> 所以下一个状态就是min（三者）</li>
+</ol>
+<p>最后输出结果就是<code>dp[m][n]</code>的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">minDistance</span><span class="params">(self, word1, word2)</span>:</span></span><br><span class="line">        m=len(word1) </span><br><span class="line">        n=len(word2)</span><br><span class="line">        dp=[[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(n+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(m+<span class="number">1</span>)]</span><br><span class="line">        <span class="comment">#空字符串的初始化</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>):</span><br><span class="line">            dp[<span class="number">0</span>][i]=i </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(m+<span class="number">1</span>):</span><br><span class="line">            dp[j][<span class="number">0</span>]=j </span><br><span class="line">        <span class="comment"># 每一次一个指针走一步    </span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,m+<span class="number">1</span>): </span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> word1[i<span class="number">-1</span>]==word2[j<span class="number">-1</span>]: </span><br><span class="line">                    dp[i][j]=dp[i<span class="number">-1</span>][j<span class="number">-1</span>]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="comment">#不同情况递归求下一个状态，分治思想</span></span><br><span class="line">                    dp[i][j]=min(dp[i<span class="number">-1</span>][j],dp[i][j<span class="number">-1</span>],dp[i<span class="number">-1</span>][j<span class="number">-1</span>])+<span class="number">1</span> </span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>][<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<p>运行时间200 ms</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+      <div>
+    
+    <div style="text-align:center;color:#ccc;font-size:14px;">
+        -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读 :D -------------
+    </div>
+    
+</div>
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/17/分治算法/" rel="next" title="分治算法">
+                <i class="fa fa-chevron-left"></i> 分治算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">Show comments from Gitment</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ritarma Arthur</p>
+              <p class="site-description motion-element" itemprop="description">The place for Rita show his learning notes and personal insights</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Ritarma" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="17888803324@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">1.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#300-最长上升子序列"><span class="nav-number">1.1.</span> <span class="nav-text">300. 最长上升子序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#674-最长连续递增序列"><span class="nav-number">1.2.</span> <span class="nav-text">674. 最长连续递增序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-最长回文子串"><span class="nav-number">1.3.</span> <span class="nav-text"> 5. 最长回文子串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#516-最长回文子序列"><span class="nav-number">1.4.</span> <span class="nav-text">516. 最长回文子序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#72-编辑距离"><span class="nav-number">1.5.</span> <span class="nav-text">72. 编辑距离</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ritarma Arthur</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">6.8k</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共6.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ojcbqkb3SnJe2sd0GMeDW4kH-gzGz0Hsz", "RTunh8RXw3C64UNppKWB9KDJ");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
