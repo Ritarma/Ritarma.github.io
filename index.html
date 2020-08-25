@@ -271,6 +271,225 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/查找/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ritarma Arthur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ritarma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/25/查找/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-25T22:56:28+08:00">
+                2020-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/08/25/查找/" class="leancloud_visitors" data-flag-title>
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.5k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><h2 id="349-两个数组的交集"><a href="#349-两个数组的交集" class="headerlink" title="349. 两个数组的交集"></a><a href="https://leetcode-cn.com/problems/intersection-of-two-arrays/" target="_blank" rel="noopener">349. 两个数组的交集</a></h2><p>利用set的不重复性，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">intersection</span><span class="params">(self, nums1: List[int], nums2: List[int])</span></span></span><br><span class="line">    set1 = set(nums1)</span><br><span class="line">    set2 = set(nums2)</span><br><span class="line">    <span class="keyword">return</span> [i <span class="keyword">for</span> i <span class="keyword">in</span> set1 <span class="keyword">if</span> i <span class="keyword">in</span> set2]</span><br></pre></td></tr></table></figure>
+<p>62 ms</p>
+<p>也可以直接使用set的求交符号，但是底层实现类似</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">intersection</span><span class="params">(self, nums1: List[int], nums2: List[int])</span> </span></span><br><span class="line"><span class="function">    <span class="title">return</span> <span class="title">set</span><span class="params">(nums1)</span>&amp;<span class="title">set</span><span class="params">(nums2)</span></span></span><br></pre></td></tr></table></figure>
+<p>84 ms</p>
+<h2 id="350-两个数组的交集-II"><a href="#350-两个数组的交集-II" class="headerlink" title="350. 两个数组的交集 II"></a><a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/" target="_blank" rel="noopener">350. 两个数组的交集 II</a></h2><p>增加了次数的要求，此时就需要一个计数表，使用Counter简单实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def intersect(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:</span><br><span class="line">    res = []</span><br><span class="line">    from collections import Counter</span><br><span class="line">    cnt1 = Counter(nums1)</span><br><span class="line">    for i in nums2:</span><br><span class="line">        if cnt1[i] &gt; 0:</span><br><span class="line">            res.append(i)</span><br><span class="line">            cnt1[i] -= 1</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<p>时间 88 ms 有点慢， 复杂度是O（M+N）的</p>
+<p>为什么很慢在提示给出了，nums1很小，nums2很大，所以可以稍微加一句<code>if len(nums1) &lt; len(nums2): nums2, nums1 = nums1, nums2</code> 让conter执行较长的，循环较小的，速度比较稳定在60 ms</p>
+<h2 id="202-快乐数"><a href="#202-快乐数" class="headerlink" title="202. 快乐数"></a><a href="https://leetcode-cn.com/problems/happy-number/" target="_blank" rel="noopener">202. 快乐数</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：19</span><br><span class="line">输出：true</span><br><span class="line">解释：</span><br><span class="line">1^2 + 9^2 = 82</span><br><span class="line">8^2 + 2^2 = 68</span><br><span class="line">6^2 + 8^2 = 100</span><br><span class="line">1^2 + 0^2 + 0^2 = 1</span><br></pre></td></tr></table></figure>
+<p><strong>定义</strong>： 对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和，然后重复这个过程直到这个数变为 1，也可能是 <strong>无限循环</strong> 但始终变不到 1。如果 <strong>可以变为</strong> 1，那么这个数就是快乐数。</p>
+<p>题目的建模过程是简单的，分开然后求平方和，不为1就继续，需要判断的是，在发生始终变不到1的情况下，如何及时跳出。而且每一各数字对应的下一个数字都是绝对的，是一个链表一样的情况。</p>
+<p>仔细思考可以发现，一个数字的平凡和结果最后是不可能溢出的，那么这个while循环的结果只有两种，变成了1，或者变成了之前的数字，导致有环</p>
+<p>用一个set来记录之前出现过的数字，一直迭代下去，如果是出现了重复的数字就是环，返回False就行，这样代码就很简单了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isHappy</span><span class="params">(self, n: int)</span> -&gt; bool:</span></span><br><span class="line">    num_table = set()</span><br><span class="line">    <span class="keyword">while</span> n &gt;= <span class="number">1</span> <span class="keyword">and</span> n <span class="keyword">not</span> <span class="keyword">in</span> num_table:</span><br><span class="line">        sum = <span class="number">0</span></span><br><span class="line">        num_table.add(n)</span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            n, mod = divmod(n, <span class="number">10</span>)</span><br><span class="line">            sum += mod ** <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> sum == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            n = sum</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<h2 id="290-单词规律"><a href="#290-单词规律" class="headerlink" title="290. 单词规律"></a><a href="https://leetcode-cn.com/problems/word-pattern/" target="_blank" rel="noopener">290. 单词规律</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: pattern = &quot;abba&quot;, str = &quot;dog cat cat dog&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p> <strong>遵循</strong> 指完全匹配，例如， <code>pattern</code> 里的每个字母和字符串 <code>str</code> 中的每个非空单词之间存在着双向连接的对应规律</p>
+<p>很明显的映射关系，只要一个个匹配就行，对pattern中的每个a,b,c 都存放在一个dict，a对应的是dog</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">pattern</th>
+<th style="text-align:center">str_list</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">dog</td>
+</tr>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:center">cat</td>
+</tr>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">apple</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wordPattern</span><span class="params">(self, pattern: str, str: str)</span> -&gt; bool:</span></span><br><span class="line">   str_list = str.split(<span class="string">' '</span>)</span><br><span class="line">   <span class="keyword">if</span> len(pattern) != len(str_list):</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">   hash_table = &#123;&#125;</span><br><span class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> range(len(pattern)):</span><br><span class="line">       <span class="keyword">if</span> pattern[i] <span class="keyword">not</span> <span class="keyword">in</span> hash_table.keys():</span><br><span class="line">           <span class="keyword">if</span> str_list[i] <span class="keyword">in</span> hash_table.values():</span><br><span class="line">               <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">           <span class="keyword">else</span>:</span><br><span class="line">               hash_table[pattern[i]] = str_list[i]</span><br><span class="line">       <span class="keyword">elif</span> hash_table[pattern[i]] != str_list[i]:</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">   <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>算法时间 40 ms 复杂度是O（N）级别</p>
+<h2 id="451-根据字符出现频率排序"><a href="#451-根据字符出现频率排序" class="headerlink" title="451. 根据字符出现频率排序"></a><a href="https://leetcode-cn.com/problems/sort-characters-by-frequency/" target="_blank" rel="noopener">451. 根据字符出现频率排序</a></h2><p>这个就是典型的排序加哈希表题，哈希表存储每个字符的出现次数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">&quot;cccaaa&quot;</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">&quot;cccaaa&quot;</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">&apos;c&apos;和&apos;a&apos;都出现三次。此外，&quot;aaaccc&quot;也是有效的答案。</span><br><span class="line">注意&quot;cacaca&quot;是不正确的，因为相同的字母必须放在一起。</span><br></pre></td></tr></table></figure>
+<p>采用Counter 来计数，喜欢自己写的也可以用dict实现，效率没有太大区别</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">frequencySort</span><span class="params">(self, s: str)</span> -&gt; str:</span></span><br><span class="line">    <span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">    s1 = Counter(s)</span><br><span class="line"></span><br><span class="line">    s2 = sorted(s1.items(),key=<span class="keyword">lambda</span> item:item[<span class="number">1</span>],reverse=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    res = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> key,value <span class="keyword">in</span> s2:</span><br><span class="line">        res += key*value</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>执行时间 40 ms</p>
+<h2 id="242-有效的字母异位词"><a href="#242-有效的字母异位词" class="headerlink" title="242. 有效的字母异位词"></a><a href="https://leetcode-cn.com/problems/valid-anagram/" target="_blank" rel="noopener">242. 有效的字母异位词</a></h2><p>给定两个字符串 <em>s</em> 和 <em>t</em> ，编写一个函数来判断 <em>t</em> 是否是 <em>s</em> 的字母异位词</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;anagram&quot;, t = &quot;nagaram&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p>满足字符串的长度，字母出现的次数一致即可，那还是用两个Counter来实现应该最为简单</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isAnagram</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    <span class="keyword">if</span> s <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> t <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">if</span> len(s) != len(t):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">    cnt1 = Counter(s)</span><br><span class="line">    cnt2 = Counter(t)</span><br><span class="line">    char_tab = cnt2.keys()</span><br><span class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> cnt1.keys():</span><br><span class="line">        <span class="keyword">if</span> char <span class="keyword">not</span> <span class="keyword">in</span> char_tab:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">elif</span> cnt2[char] != cnt1[char]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>时间：44 ms, 在所有 Python3 提交中击败了96.13%的用户</p>
+<h2 id="205-同构字符串"><a href="#205-同构字符串" class="headerlink" title="205. 同构字符串"></a><a href="https://leetcode-cn.com/problems/isomorphic-strings/" target="_blank" rel="noopener">205. 同构字符串</a></h2><p>如果 s 中的字符可以被替换得到 t ，那么这两个字符串是同构的。</p>
+<p>所有出现的字符都必须用另一个字符替换，同时保留字符的顺序。两个字符不能映射到同一个字符上，但字符可以映射自己本身</p>
+<p>这个题和上面的单词规律是一样，都检查映射关系是否正确：</p>
+<p>一个非常python 的写法是</p>
+<p>map(s.index, s) == map(t.index, t)</p>
+<p>由于返回的是map的对象，没有实现 == 运算符重载</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    <span class="keyword">return</span> list(map(s.index,s)) == list(map(t.index,t))</span><br></pre></td></tr></table></figure>
+<h2 id="540-有序数组中的单一元素"><a href="#540-有序数组中的单一元素" class="headerlink" title="540. 有序数组中的单一元素"></a><a href="https://leetcode-cn.com/problems/single-element-in-a-sorted-array/" target="_blank" rel="noopener">540. 有序数组中的单一元素</a></h2><p>一个只包含整数的有序数组，每个元素都会出现两次，唯有一个数只会出现一次，找出这个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,1,2,3,3,4,4,8,8]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+<p>如果全都是两个的，那么肯定num[奇数] == nums[偶数]，由于只有一个，导致后面发生变化，每一次取一个mid，来缩短查询距离，如果mid是偶数，那么和1异或的话，那么得到的是mid+1，如果mid是奇数，得到的是mid-1。如果相等的话，那么唯一的元素还在这之后，往后找就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def singleNonDuplicate(self, nums):</span><br><span class="line">        lo, hi = 0, len(nums) - 1</span><br><span class="line">        while lo &lt; hi:</span><br><span class="line">            mid = (lo + hi) // 2</span><br><span class="line">            if nums[mid] == nums[mid ^ 1]:</span><br><span class="line">                lo = mid + 1</span><br><span class="line">            else:</span><br><span class="line">                hi = mid</span><br><span class="line">        return nums[lo]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/22/动态规划/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1969,7 +2188,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2056,7 +2275,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">6.8k</span>
+    <span title="Site words total count">8.2k</span>
   
 </div>
 
@@ -2075,7 +2294,7 @@ P(y_{i+1} = S_p,x_{j+1}=O_q) = a_{ip}*\pi_i*b_{i+1，j+1}</script><p>解决三�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.8k字</span>
+  <span class="post-count">博客全站共8.2k字</span>
 </div>
         
 
